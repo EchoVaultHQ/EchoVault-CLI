@@ -2,3 +2,4 @@ textual-dev
 pygame
 sqlalchemy
 rich
+python-mpv
