@@ -43,6 +43,42 @@ Select a track in the list and use these keys to control playback:
 
 - ![EchoVault CLI theme 2](Screenshots/cli2.png)
 
+## Development
+
+1. Clone and install in editable mode (picks up code changes immediately, no reinstall needed per edit):
+   ```console
+   git clone https://github.com/EchoVaultHQ/EchoVault-CLI.git
+   cd EchoVault-CLI
+   pip install --user -e .
+   ```
+2. Run it:
+   ```console
+   echovault
+   ```
+   or directly via module: `python -m echovault.app`
+
+3. **Live-reload dev mode** — Textual can watch `app.tcss` and hot-reload styles without restarting, plus stream logs to a separate console. This needs the `textual-dev` package (not a runtime dependency, install it separately):
+   ```console
+   pip install --user textual-dev
+   ```
+   Then, in two terminals:
+   ```console
+   # terminal 1 — devtools console (shows logs/errors)
+   textual console
+
+   # terminal 2 — run the app in dev mode
+   textual run --dev echovault.app:EchoVault
+   ```
+   Note: pass the module path as `module:AppClass` (`echovault.app:EchoVault`), not a file path — `textual run --dev src/echovault/app.py` runs the file standalone and breaks its relative imports (`from .database import ...`).
+
+   Edit `src/echovault/app.tcss` while the app is running and the styling updates live.
+
+4. Run the test suite:
+   ```console
+   pip install --user pytest
+   pytest tests/
+   ```
+
 ## Deployment
 
 Releases publish to PyPI automatically via GitHub Actions (`.github/workflows/publish.yml`) whenever a `v*` tag is pushed.

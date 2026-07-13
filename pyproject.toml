@@ -22,7 +22,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["textual>=0.50.0", "pygame>=2.5.2"]
+dependencies = ["textual>=0.50.0", "pygame>=2.5.2", "textual-image>=0.13.2"]
 
 [project.urls]
 Documentation = "https://github.com/ACS-lessgo/EchoVault-CLI#readme"
