@@ -54,6 +54,7 @@ class AudioPlayer:
     def __init__(self):
         pygame.mixer.init()
         self.current_track: Optional[str] = None
+        self.loaded = False
         self.is_playing = False
         self.is_paused = False
         self.playlist: list = []
