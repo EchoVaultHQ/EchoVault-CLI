@@ -43,6 +43,31 @@ Select a track in the list and use these keys to control playback:
 
 - ![EchoVault CLI theme 2](Screenshots/cli2.png)
 
+## Deployment
+
+Releases publish to PyPI automatically via GitHub Actions (`.github/workflows/publish.yml`) whenever a `v*` tag is pushed.
+
+1. Bump the version in `src/echovault/__about__.py`:
+   ```python
+   __version__ = "X.Y.Z"
+   ```
+2. Commit the bump:
+   ```console
+   git add src/echovault/__about__.py
+   git commit -m "Bump version to X.Y.Z"
+   git push origin main
+   ```
+3. Tag and push the tag to trigger the release:
+   ```console
+   git tag vX.Y.Z
+   git push origin vX.Y.Z
+   ```
+4. Watch the run under the repo's **Actions** tab. On success, the new version appears on [PyPI](https://pypi.org/project/EchoVault-CLI/#history).
+
+**Notes:**
+- Publishing uses [PyPI Trusted Publishing](https://docs.pypi.org/trusted-publishers/) (OIDC) — no API token is stored in the repo. The trusted publisher on PyPI must point at the current GitHub owner/repo/workflow (`Settings → Actions → Publishing` on the PyPI project page); update it there if the repo is ever renamed or transferred.
+- Re-running a release requires a new tag or a re-pushed tag (delete + recreate) — pushing an unchanged existing tag will not retrigger the workflow.
+
 ## Related Projects
 
 - [EchoVault](https://github.com/ACS-lessgo/EchoVault) — the main desktop music player this CLI complements.
